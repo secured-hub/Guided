@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GHL 30-Day Path</title>
+<title>Questward · GHL 30-Day Path</title>
 <style>
   :root{
     --ink:#241a14;
@@ -26,7 +26,7 @@
   header{background:linear-gradient(160deg,var(--terra-deep),var(--terra));color:#fdf6ee;padding:38px 22px 30px}
   .kicker{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;opacity:.85;font-weight:600;margin-bottom:10px}
   header h1{font-family:Georgia,'Times New Roman',serif;font-size:2.1rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
-  header p{margin-top:10px;opacity:.9;max-width:60ch;font-size:.95rem}
+  header p{margin-top:10px;opacity:.9;max-width:62ch;font-size:.95rem}
   .progress-shell{margin-top:22px}
   .progress-top{display:flex;justify-content:space-between;align-items:baseline;font-size:.8rem;margin-bottom:7px;opacity:.92}
   .bar{height:9px;background:rgba(255,255,255,.25);border-radius:20px;overflow:hidden}
@@ -58,7 +58,7 @@
   .item.done .it-title{text-decoration:line-through;text-decoration-color:var(--olive);color:var(--muted)}
   .it-main{flex:1;min-width:0}
   .it-title{font-size:.98rem;font-weight:600;line-height:1.35}
-  .it-sub{display:flex;align-items:center;gap:7px;font-size:.8rem;color:var(--muted);margin-top:2px}
+  .it-sub{display:flex;align-items:center;gap:7px;font-size:.8rem;color:var(--muted);margin-top:2px;flex-wrap:wrap}
   .type-badge{display:inline-flex;align-items:center;gap:5px;font-weight:600}
   .type-badge svg{width:14px;height:14px}
   .type-video{color:var(--terra)}
@@ -68,12 +68,12 @@
   .dot{color:var(--line)}
   .it-focus{font-size:.85rem;color:var(--muted);margin-top:4px}
 
+  /* video search + link */
   .search-row{margin-top:9px;display:flex;flex-wrap:wrap;gap:7px;align-items:center}
   .kw{font-size:.8rem;background:var(--sand);border-radius:7px;padding:4px 9px;flex:1;min-width:190px}
   .kw b{color:var(--terra-deep);font-weight:600}
   .yt-search{text-decoration:none;font-size:.76rem;font-weight:600;background:var(--terra);color:#fff;padding:5px 11px;border-radius:7px;white-space:nowrap;transition:background .15s}
   .yt-search:hover{background:var(--terra-deep)}
-
   .link-row{margin-top:9px;display:flex;gap:7px;align-items:center}
   .link-row input{flex:1;border:1px solid var(--line);border-radius:8px;padding:7px 10px;font-size:.83rem;background:#fff;color:var(--ink);font-family:inherit}
   .link-row input:focus{outline:none;border-color:var(--terra)}
@@ -82,6 +82,25 @@
   .open-link.active:hover{background:var(--olive-deep)}
   .saved-dot{font-size:.68rem;color:var(--olive);font-weight:600;opacity:0;transition:opacity .3s}
   .saved-dot.show{opacity:1}
+
+  /* authored content block (reading / practice / quiz) */
+  .content-toggle{margin-top:8px;font-size:.8rem;font-weight:600;color:var(--blue);background:none;border:none;cursor:pointer;padding:0;font-family:inherit;display:inline-flex;align-items:center;gap:5px}
+  .content-toggle:hover{text-decoration:underline}
+  .content-body{display:none;margin-top:10px;background:#fbf5ec;border:1px solid var(--line-soft);border-left:3px solid var(--blue);border-radius:8px;padding:12px 14px;font-size:.88rem;color:#3f3128}
+  .content-body.open{display:block}
+  .content-body.practice-body{border-left-color:var(--olive)}
+  .content-body.quiz-body{border-left-color:var(--purple)}
+  .content-body h4{font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:2px 0 8px}
+  .content-body p{margin:0 0 9px}
+  .content-body ol,.content-body ul{margin:0 0 9px 18px}
+  .content-body li{margin-bottom:5px}
+  .content-body strong{color:var(--ink)}
+  .qa{margin-bottom:12px}
+  .qa .q{font-weight:600;color:var(--ink);margin-bottom:2px}
+  .qa .reveal{font-size:.78rem;font-weight:600;color:var(--purple);background:none;border:none;cursor:pointer;padding:0;font-family:inherit}
+  .qa .reveal:hover{text-decoration:underline}
+  .qa .a{display:none;margin-top:4px;color:#4a3d33}
+  .qa .a.show{display:block}
 
   footer{max-width:840px;margin:30px auto 0;padding:0 18px;text-align:center;color:var(--muted);font-size:.8rem}
   .reset{background:none;border:1px solid var(--line);color:var(--muted);font-size:.78rem;padding:7px 15px;border-radius:9px;cursor:pointer;margin-top:12px;font-family:inherit}
@@ -97,9 +116,9 @@
 <body>
 <header>
   <div class="wrap">
-    <div class="kicker">GoHighLevel · 30-Day Path</div>
+    <div class="kicker">Questward · GoHighLevel 30-Day Path</div>
     <h1>From dashboard to client-ready in a month</h1>
-    <p>Four modules, each broken into Lecture, Practice, and Review. Watch, build in your own account, then check yourself. Search a keyword, paste the video you find, tick it off. Progress and links stay on this device.</p>
+    <p>Four modules, each with Lecture, Reading, Practice, and a self-check Review. Videos link out to YouTube; the reading, hands-on builds, and quizzes are written right here so you never have to go hunting. Progress and links stay on this device.</p>
     <div class="progress-shell">
       <div class="progress-top"><span id="pct-label">0 of 0 done</span><span id="pct-num">0%</span></div>
       <div class="bar"><span id="bar-fill"></span></div>
@@ -110,7 +129,7 @@
 <main id="app"></main>
 
 <footer>
-  <p>Tip: add “2025” or “2026” to any search to catch the newest interface. Module 4 ties straight into your n8n work.</p>
+  <p>Tip: for any video, use YouTube's ⋯ → “Show transcript” to copy the captions. Module 4 ties straight into your n8n work.</p>
   <button class="reset" id="reset">Reset all progress &amp; links</button>
 </footer>
 
@@ -119,8 +138,13 @@ const TYPES = {
   video:   {label:"Video",    cls:"type-video",    svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg>'},
   reading: {label:"Reading",  cls:"type-reading",  svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v15H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>'},
   practice:{label:"Practice", cls:"type-practice", svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2l-2 6 4 2-6 12 2-8-4-2z" fill="currentColor" stroke="none"/></svg>'},
-  quiz:    {label:"Quiz",     cls:"type-quiz",     svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 9a3 3 0 114 2.8c-.8.4-1 .9-1 1.7M12 17h.01"/></svg>'},
+  quiz:    {label:"Review",   cls:"type-quiz",     svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 9a3 3 0 114 2.8c-.8.4-1 .9-1 1.7M12 17h.01"/></svg>'},
 };
+
+/* helper builders for authored content */
+function reading(html){ return {kind:"reading", html}; }
+function practice(steps){ return {kind:"practice", steps}; }
+function quiz(pairs){ return {kind:"quiz", pairs}; }
 
 const MODULES = [
  {m:1, chapter:"Foundations & Setup", sections:[
@@ -131,13 +155,51 @@ const MODULES = [
      {id:"1-4", n:"1.4", type:"video", t:"Pipelines & Opportunities (CRM)", min:20, kw:"GoHighLevel pipelines and opportunities tutorial", f:"Sales pipelines, stages, opportunity value, moving deals."},
    ]},
    {sec:"Reading", items:[
-     {id:"1-5", n:"1.5", type:"reading", t:"Settings, Business Profile & Branding", min:10, kw:"GoHighLevel account settings business profile setup", f:"Business info, timezone, branding, sender foundations."},
+     {id:"1-5", n:"1.5", type:"reading", t:"Settings, Business Profile & Branding", min:10,
+       content: reading(`
+         <h4>The lay of the land</h4>
+         <p>GHL has two levels. The <strong>Agency</strong> account is the outer shell — it's <em>you</em>, the operator. Inside it live <strong>Sub-Accounts</strong> (also called Locations), one per business or client. Everything a business actually uses — contacts, calendars, funnels, automations — lives inside a sub-account, not the agency.</p>
+         <p>Before building anything, set the foundation in <strong>Settings → Business Profile</strong> of a sub-account:</p>
+         <ul>
+           <li><strong>Business name, address, timezone.</strong> Timezone is the sneaky-important one — every appointment, send time, and automation delay is calculated from it. Set it wrong and follow-ups fire at 3am.</li>
+           <li><strong>Business email & phone.</strong> These become defaults for sending, so fill them before you build workflows that reference them.</li>
+           <li><strong>Branding</strong> (logo, colors, favicon). Used across funnels, the client portal, and emails. Do it once here and it flows everywhere.</li>
+         </ul>
+         <p><strong>Custom field vs custom value</strong> — the one distinction beginners trip on:</p>
+         <ul>
+           <li>A <strong>custom field</strong> stores data that's different <em>per contact</em> (e.g. "Preferred Van Size"). It lives on each contact record.</li>
+           <li>A <strong>custom value</strong> is one fixed value for the <em>whole account</em> (e.g. your booking link or business phone). Set it once, reuse it in every email so you never retype it.</li>
+         </ul>
+         <p><strong>Takeaway:</strong> the agency is you; sub-accounts are the businesses. Get timezone and branding right first — they silently affect everything downstream.`)
+     },
    ]},
    {sec:"Practice", items:[
-     {id:"1-6", n:"1.6", type:"practice", t:"Build a sub-account from scratch", min:30, kw:"GoHighLevel create sub account step by step", f:"Spin up a real sub-account, add contacts, build one pipeline."},
+     {id:"1-6", n:"1.6", type:"practice", t:"Build a sub-account from scratch", min:30,
+       content: practice([
+         "From the agency view, create a new sub-account. Name it after a real or pretend business (use EHMA Trucking so it's meaningful).",
+         "Enter the business profile: name, address, and — carefully — the correct timezone.",
+         "Add branding: upload a logo and set a primary color.",
+         "Create 3 custom values: Business Phone, Booking Link (leave a placeholder), and Owner First Name.",
+         "Go to Contacts and manually add 3 test contacts. Give one of them a tag like 'lead'.",
+         "Create 1 custom field (e.g. 'Service Needed') and fill it in on one contact.",
+         "Build a pipeline called 'Sales' with 4 stages: New Lead → Contacted → Quoted → Won.",
+         "Create one opportunity, assign it a value, and drag it from New Lead to Contacted.",
+       ])
+     },
    ]},
    {sec:"Review", items:[
-     {id:"1-7", n:"1.7", type:"quiz", t:"Chapter 1 self-check", min:10, kw:"GoHighLevel CRM basics explained", f:"Can you explain agency vs sub-account, and custom field vs value?"},
+     {id:"1-7", n:"1.7", type:"quiz", t:"Chapter 1 self-check", min:10,
+       content: quiz([
+         ["In one sentence, what's the difference between the agency account and a sub-account?",
+          "The agency is your outer operator account; a sub-account is a single business/client where the actual contacts, funnels, and automations live."],
+         ["You want your booking link available in every email without retyping it. Custom field or custom value?",
+          "Custom value — it's one fixed value for the whole account. (A custom field would be for data that differs per contact.)"],
+         ["Why does setting the timezone correctly matter so much?",
+          "Every appointment time, scheduled send, and automation wait/delay is calculated from the sub-account timezone. Wrong timezone = messages and bookings at the wrong hour."],
+         ["What are the two things that move a deal through your CRM visually?",
+          "Pipelines (the set of stages) and opportunities (the individual deals you drag between stages)."],
+       ])
+     },
    ]},
  ]},
  {m:2, chapter:"Communication & Conversations", sections:[
@@ -149,13 +211,46 @@ const MODULES = [
      {id:"2-5", n:"2.5", type:"video", t:"Calendars & Appointment Booking", min:20, kw:"GoHighLevel calendar setup tutorial", f:"Calendar types, availability, round-robin, Google sync."},
    ]},
    {sec:"Reading", items:[
-     {id:"2-6", n:"2.6", type:"reading", t:"SMS compliance & deliverability notes", min:10, kw:"A2P 10DLC compliance guide small business", f:"Why registration matters and how to avoid blocked sends."},
+     {id:"2-6", n:"2.6", type:"reading", t:"SMS compliance & deliverability notes", min:10,
+       content: reading(`
+         <h4>Why your messages get blocked (and how to not)</h4>
+         <p>Two separate systems decide whether your messages actually arrive. Beginners skip this and then wonder why nothing sends.</p>
+         <p><strong>SMS — A2P 10DLC registration.</strong> In the US, "Application-to-Person" texting over a standard 10-digit local number must be registered with the carriers. You register your <em>brand</em> (the business) and a <em>campaign</em> (what you'll text about — e.g. appointment reminders). Until this is approved, carriers silently filter or block your texts. It's not optional and it's not instant, so start it early. Keep messages clear, include the business name, and always give an opt-out ("Reply STOP").</p>
+         <p><strong>Email — domain authentication.</strong> Sending from a real domain (you@yourbiz.com) needs the domain "authenticated" so inbox providers trust you. That means adding DNS records (SPF, DKIM, and usually a dedicated sending domain via Mailgun/the built-in sender). Skip it and your mail lands in spam or bounces.</p>
+         <p><strong>Deliverability habits that matter more than any trick:</strong></p>
+         <ul>
+           <li>Only message people who expect it. Cold blasts wreck your sender reputation fast.</li>
+           <li>Warm up gradually — don't send 5,000 emails on day one from a fresh domain.</li>
+           <li>Keep an easy unsubscribe. Spam complaints hurt far more than unsubscribes.</li>
+         </ul>
+         <p><strong>Takeaway:</strong> registration and authentication are plumbing. Boring, but if they're wrong, nothing else you build in GHL reaches anyone.`)
+     },
    ]},
    {sec:"Practice", items:[
-     {id:"2-7", n:"2.7", type:"practice", t:"Build a booking flow + confirmation", min:30, kw:"GoHighLevel appointment booking automation", f:"Calendar to booking page to confirmation email/SMS."},
+     {id:"2-7", n:"2.7", type:"practice", t:"Build a booking flow + confirmation", min:30,
+       content: practice([
+         "Create a calendar (e.g. 'Discovery Call'), set your available days/hours, and set the slot length to 30 min.",
+         "Connect your Google Calendar so it checks for conflicts (or skip if you don't have one to test with).",
+         "Grab the calendar's booking link and paste it into the 'Booking Link' custom value you made in Module 1.",
+         "Book a test appointment on the calendar yourself to confirm it works.",
+         "In the email builder, create a simple 'Booking Confirmation' email that uses the contact's first name.",
+         "Bonus: note where in the calendar settings you'd attach an automatic confirmation + reminder (you'll wire the automation in Module 3).",
+       ])
+     },
    ]},
    {sec:"Review", items:[
-     {id:"2-8", n:"2.8", type:"quiz", t:"Chapter 2 self-check", min:10, kw:"GoHighLevel messaging setup overview", f:"Can you set up sending and book an appointment end to end?"},
+     {id:"2-8", n:"2.8", type:"quiz", t:"Chapter 2 self-check", min:10,
+       content: quiz([
+         ["Your SMS reminders aren't arriving even though the workflow runs. What's the most likely cause?",
+          "A2P 10DLC registration isn't approved yet, so carriers are filtering/blocking the texts. Nothing sends reliably until brand + campaign are registered."],
+         ["What does authenticating your email domain (SPF/DKIM) actually buy you?",
+          "Inbox providers trust that your mail really comes from your domain, so it lands in the inbox instead of spam — and bounces drop."],
+         ["Name one habit that protects sender reputation more than any clever tactic.",
+          "Only message people who opted in / expect it (and keep an easy unsubscribe). Cold blasts and spam complaints do the most damage."],
+         ["Where does the booking link you generate need to go so your emails can reuse it?",
+          "Into a custom value (e.g. 'Booking Link'), so every email/message can insert it without you retyping the URL."],
+       ])
+     },
    ]},
  ]},
  {m:3, chapter:"Funnels, Sites & Automation Core", sections:[
@@ -166,13 +261,48 @@ const MODULES = [
      {id:"3-4", n:"3.4", type:"video", t:"Triggers, Actions & If/Else Logic", min:25, kw:"GoHighLevel workflow if else conditions tutorial", f:"Trigger types, conditional branches, wait steps, goals."},
    ]},
    {sec:"Reading", items:[
-     {id:"3-5", n:"3.5", type:"reading", t:"Automation planning: map before you build", min:10, kw:"marketing automation workflow planning basics", f:"Sketch the flow on paper before touching the builder."},
+     {id:"3-5", n:"3.5", type:"reading", t:"Automation planning: map before you build", min:10,
+       content: reading(`
+         <h4>Sketch the flow before you touch the builder</h4>
+         <p>The workflow builder is where people get lost, because they start dragging actions before they know what the automation is supposed to <em>do</em>. Every workflow is just this shape:</p>
+         <p style="text-align:center"><strong>Trigger → (conditions) → Actions → (wait) → more Actions</strong></p>
+         <ul>
+           <li><strong>Trigger</strong> = the thing that <em>starts</em> it. "Form submitted", "Appointment booked", "Tag added", "Opportunity stage changed". A workflow does nothing until its trigger fires.</li>
+           <li><strong>Actions</strong> = what happens. Send email, send SMS, add a tag, move a pipeline stage, notify you.</li>
+           <li><strong>Wait steps</strong> = pauses. "Wait 1 day", "Wait until 9am", "Wait until they reply". This is how you space out a nurture sequence instead of firing everything at once.</li>
+           <li><strong>If/Else</strong> = branches. "Did they open the email? Yes → do this. No → do that." This is where automations start feeling smart.</li>
+         </ul>
+         <p><strong>The planning habit:</strong> before building, write the flow in one plain sentence — <em>"When someone submits the contact form, tag them 'lead', send a welcome email, wait 2 days, and if they haven't booked, send a reminder."</em> Once you can say it in a sentence, the builder is just translation.</p>
+         <p><strong>Takeaway:</strong> map trigger → actions → waits → branches on paper (or in your head) first. Building blind is how workflows become spaghetti.`)
+     },
    ]},
    {sec:"Practice", items:[
-     {id:"3-6", n:"3.6", type:"practice", t:"Lead-capture-to-nurture funnel", min:35, kw:"GoHighLevel lead nurture workflow example", f:"Form to funnel to tagged contact to multi-step nurture."},
+     {id:"3-6", n:"3.6", type:"practice", t:"Lead-capture-to-nurture funnel", min:35,
+       content: practice([
+         "Build a 1-page funnel (or website page) with a headline and a form asking for Name, Email, Phone.",
+         "Publish it and submit the form yourself once to create a test contact.",
+         "Create a new workflow. Set the trigger to 'Form Submitted' (choose your form).",
+         "Action 1: add the tag 'lead'.",
+         "Action 2: send a welcome email using the contact's first name.",
+         "Add a Wait step: 2 days (for testing, drop it to 2 minutes so you can watch it run).",
+         "Add an If/Else: does the contact have the tag 'booked'? If NO → send a reminder SMS/email with the booking link.",
+         "Turn the workflow on, submit the form again, and watch it move through the steps in the workflow's execution log.",
+       ])
+     },
    ]},
    {sec:"Review", items:[
-     {id:"3-7", n:"3.7", type:"quiz", t:"Chapter 3 self-check", min:10, kw:"GoHighLevel workflow triggers explained", f:"Can you name 5 triggers and build an if/else branch?"},
+     {id:"3-7", n:"3.7", type:"quiz", t:"Chapter 3 self-check", min:10,
+       content: quiz([
+         ["What are the four building blocks of almost any workflow?",
+          "A trigger (what starts it), actions (what it does), wait steps (pauses/spacing), and if/else branches (decisions)."],
+         ["Name three things that can be a trigger.",
+          "Any of: form submitted, appointment booked, tag added/removed, opportunity stage changed, contact created, birthday, etc."],
+         ["What's the purpose of a wait step in a nurture sequence?",
+          "To space messages out over time instead of firing them all at once — e.g. welcome now, reminder in 2 days."],
+         ["Why plan the automation in a plain sentence before building it?",
+          "It forces you to define trigger, actions, and branches clearly, so the builder becomes simple translation instead of trial-and-error spaghetti."],
+       ])
+     },
    ]},
  ]},
  {m:4, chapter:"Advanced, SaaS & Client Delivery", sections:[
@@ -185,18 +315,55 @@ const MODULES = [
      {id:"4-6", n:"4.6", type:"video", t:"API, Webhooks & n8n Integration", min:30, kw:"GoHighLevel API webhooks n8n integration tutorial", f:"Inbound/outbound webhooks, API basics, connect GHL to n8n."},
    ]},
    {sec:"Reading", items:[
-     {id:"4-7", n:"4.7", type:"reading", t:"Client onboarding checklist", min:10, kw:"GoHighLevel agency client onboarding checklist", f:"What to gather and configure before handing off a build."},
+     {id:"4-7", n:"4.7", type:"reading", t:"Client onboarding checklist", min:10,
+       content: reading(`
+         <h4>What to gather before you hand off a build</h4>
+         <p>Handing a client a half-configured sub-account is how you lose them in week one. Before delivery, collect and set:</p>
+         <ul>
+           <li><strong>Access & branding:</strong> logo, brand colors, business name, address, and the correct timezone.</li>
+           <li><strong>Sending setup:</strong> their domain authenticated for email, and A2P registration started for SMS. This has lead time — kick it off first.</li>
+           <li><strong>Connections:</strong> Stripe (for payments), Google Calendar, and any Facebook/Instagram pages for the inbox and lead forms.</li>
+           <li><strong>Core assets:</strong> at least one calendar, one lead form/funnel, and the "speed-to-lead" follow-up workflow live.</li>
+           <li><strong>Reputation:</strong> Google Business Profile connected so review requests work.</li>
+         </ul>
+         <p><strong>The reusable move:</strong> once you've built a solid setup once, save it as a <strong>Snapshot</strong>. A snapshot is a template of an entire sub-account — funnels, workflows, calendars, pipelines — that you load into the next client's account in seconds. Build once, deploy many. This is the leverage that makes agency work scalable, and it feeds directly into SaaS mode.</p>
+         <p><strong>Takeaway:</strong> onboarding is a checklist, not a vibe. Snapshots turn your best build into a product you can stamp out repeatedly.`)
+     },
    ]},
    {sec:"Practice", items:[
-     {id:"4-8", n:"4.8", type:"practice", t:"Capstone: full client build + snapshot", min:45, kw:"GoHighLevel full client onboarding build walkthrough", f:"Assemble everything into one client-ready sub-account, save snapshot."},
+     {id:"4-8", n:"4.8", type:"practice", t:"Capstone: full client build + snapshot", min:45,
+       content: practice([
+         "In your practice sub-account, confirm the basics from Module 1 are done: profile, timezone, branding, custom values.",
+         "Confirm a calendar exists and a lead form/funnel is published (Modules 2–3).",
+         "Build a 'speed-to-lead' workflow: trigger on form submit → instantly send SMS + email → notify the owner.",
+         "Connect Stripe (test mode) and create one Product with a price, then generate a test invoice.",
+         "Set up a simple review-request workflow (trigger: opportunity marked Won → send review link).",
+         "Go to the agency level and create a Snapshot of this sub-account.",
+         "Create a brand-new empty sub-account and load your snapshot into it. Confirm the funnels/workflows came across.",
+         "You now have a repeatable client-in-a-box. That's the whole game.",
+       ])
+     },
    ]},
    {sec:"Review", items:[
-     {id:"4-9", n:"4.9", type:"quiz", t:"Final self-check", min:10, kw:"GoHighLevel agency setup complete guide", f:"Could you set up a paying client from zero today?"},
+     {id:"4-9", n:"4.9", type:"quiz", t:"Final self-check", min:10,
+       content: quiz([
+         ["What is a Snapshot and why is it the key to scaling agency work?",
+          "A snapshot is a reusable template of an entire sub-account (funnels, workflows, calendars, pipelines). Build a great setup once, then deploy it into new client accounts in seconds — build once, stamp out many."],
+         ["Which two setup items have real lead time and should be started first in onboarding?",
+          "Email domain authentication and A2P 10DLC SMS registration — both take time to approve, and nothing sends reliably until they're done."],
+         ["What does a 'speed-to-lead' workflow do, and why does it matter?",
+          "It instantly texts/emails a new lead the moment they submit a form (and alerts the owner). Fast response dramatically increases the odds of converting the lead."],
+         ["In one sentence, what does SaaS mode let you do?",
+          "Rebrand and resell GHL as your own software product to clients — white-labeling the platform and rebilling for usage."],
+         ["Could you set up a paying client from zero today? Walk yourself through the order.",
+          "Profile/timezone/branding → authenticate email + start A2P → calendar + lead form → speed-to-lead workflow → Stripe + product → review requests → save as snapshot. If you can narrate that, you're client-ready."],
+       ])
+     },
    ]},
  ]},
 ];
 
-const STORE_KEY = "ghl30_coursera_v1";
+const STORE_KEY = "ghl30_questward_v1";
 let state = load();
 function load(){ try{ return JSON.parse(localStorage.getItem(STORE_KEY))||{}; }catch(e){ return {}; } }
 function save(){ try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }catch(e){} }
@@ -205,11 +372,38 @@ let ALL_IDS = [];
 MODULES.forEach(mod=>mod.sections.forEach(s=>s.items.forEach(it=>ALL_IDS.push(it.id))));
 
 function ytSearchUrl(kw){ return "https://www.youtube.com/results?search_query="+encodeURIComponent(kw); }
+function esc(s){ return (s||"").replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
 function moduleProgress(mod){
   let total=0, done=0;
   mod.sections.forEach(s=>s.items.forEach(it=>{ total++; if(state[it.id]&&state[it.id].done) done++; }));
   return {done, total, pct: total? done/total:0};
+}
+
+function renderContent(it){
+  const c = it.content;
+  if(!c) return "";
+  if(c.kind==="reading"){
+    return `<button class="content-toggle" data-toggle="${it.id}">▸ Read the notes</button>
+            <div class="content-body" id="cb-${it.id}">${c.html}</div>`;
+  }
+  if(c.kind==="practice"){
+    const steps = c.steps.map(s=>`<li>${esc(s)}</li>`).join("");
+    return `<button class="content-toggle" data-toggle="${it.id}">▸ Show the build steps</button>
+            <div class="content-body practice-body" id="cb-${it.id}">
+              <h4>Do this in your own GHL account</h4><ol>${steps}</ol></div>`;
+  }
+  if(c.kind==="quiz"){
+    const qs = c.pairs.map((p,i)=>`
+      <div class="qa">
+        <div class="q">${esc(p[0])}</div>
+        <button class="reveal" data-reveal="${it.id}-${i}">Show answer</button>
+        <div class="a" id="a-${it.id}-${i}">${esc(p[1])}</div>
+      </div>`).join("");
+    return `<button class="content-toggle" data-toggle="${it.id}">▸ Start the self-check</button>
+            <div class="content-body quiz-body" id="cb-${it.id}"><h4>Answer from memory, then reveal</h4>${qs}</div>`;
+  }
+  return "";
 }
 
 function render(){
@@ -220,7 +414,6 @@ function render(){
     const openState = state.__open && state.__open[mod.m];
     const wrap=document.createElement("div");
     wrap.className="module"+(openState?" open":"");
-
     let mins=0; mod.sections.forEach(s=>s.items.forEach(it=>mins+=it.min));
     const deg = Math.round(mp.pct*360);
 
@@ -231,25 +424,32 @@ function render(){
         const st=state[it.id]||{};
         const done=!!st.done, link=st.link||"";
         const T=TYPES[it.type];
+        let interactive="";
+        if(it.type==="video"){
+          interactive=`
+            <div class="search-row">
+              <div class="kw">Search: <b>${esc(it.kw)}</b></div>
+              <a class="yt-search" href="${ytSearchUrl(it.kw)}" target="_blank" rel="noopener">YouTube ↗</a>
+            </div>
+            <div class="link-row">
+              <input type="url" placeholder="Paste the link you found…" value="${(link||'').replace(/"/g,'&quot;')}" data-id="${it.id}" />
+              <a class="open-link ${link?'active':''}" href="${link||'#'}" target="_blank" rel="noopener">Open</a>
+              <span class="saved-dot" data-dot="${it.id}">saved</span>
+            </div>`;
+        } else {
+          interactive = renderContent(it);
+        }
         itemsHtml+=`
         <div class="item${done?' done':''}">
           <div class="check" data-id="${it.id}" role="checkbox" aria-checked="${done}" tabindex="0">${done?'✓':''}</div>
           <div class="it-main">
-            <div class="it-title">${it.n} · ${it.t}</div>
+            <div class="it-title">${it.n} · ${esc(it.t)}</div>
             <div class="it-sub">
               <span class="type-badge ${T.cls}">${T.svg}${T.label}</span>
               <span class="dot">•</span><span>${it.min} min</span>
             </div>
-            <div class="it-focus">${it.f}</div>
-            <div class="search-row">
-              <div class="kw">Search: <b>${it.kw}</b></div>
-              <a class="yt-search" href="${ytSearchUrl(it.kw)}" target="_blank" rel="noopener">YouTube ↗</a>
-            </div>
-            <div class="link-row">
-              <input type="url" placeholder="Paste the link you found…" value="${link.replace(/"/g,'&quot;')}" data-id="${it.id}" />
-              <a class="open-link ${link?'active':''}" href="${link||'#'}" target="_blank" rel="noopener">Open</a>
-              <span class="saved-dot" data-dot="${it.id}">saved</span>
-            </div>
+            ${it.f?`<div class="it-focus">${esc(it.f)}</div>`:""}
+            ${interactive}
           </div>
         </div>`;
       });
@@ -278,7 +478,7 @@ function render(){
 function bind(){
   document.querySelectorAll(".mod-head").forEach(h=>{
     h.addEventListener("click", e=>{
-      if(e.target.closest("input,a,.check")) return;
+      if(e.target.closest("input,a,.check,.content-toggle,.reveal")) return;
       const m=h.dataset.mod;
       state.__open=state.__open||{};
       state.__open[m]=!state.__open[m];
@@ -299,6 +499,26 @@ function bind(){
       if(val){btn.href=val;btn.classList.add("active");}else{btn.href="#";btn.classList.remove("active");}
       const dot=inp.parentElement.querySelector(".saved-dot");
       dot.classList.add("show"); clearTimeout(inp._t); inp._t=setTimeout(()=>dot.classList.remove("show"),1200);
+    });
+  });
+  // content expand/collapse (persist open state per item)
+  document.querySelectorAll(".content-toggle").forEach(btn=>{
+    btn.addEventListener("click", e=>{
+      e.stopPropagation();
+      const id=btn.dataset.toggle;
+      const body=document.getElementById("cb-"+id);
+      const nowOpen = !body.classList.contains("open");
+      body.classList.toggle("open", nowOpen);
+      btn.textContent = (nowOpen?"▾ ":"▸ ") + btn.textContent.replace(/^[▸▾]\s*/,"");
+    });
+  });
+  document.querySelectorAll(".reveal").forEach(btn=>{
+    btn.addEventListener("click", e=>{
+      e.stopPropagation();
+      const a=document.getElementById("a-"+btn.dataset.reveal);
+      const show=!a.classList.contains("show");
+      a.classList.toggle("show", show);
+      btn.textContent = show?"Hide answer":"Show answer";
     });
   });
 }
