@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GHL 30-Day Path</title>
+<style>
+  :root{
+    --ink:#241a14;
+    --terra:#b85c38;
+    --terra-deep:#9a4a2c;
+    --olive:#5f6b3f;
+    --olive-deep:#4d5732;
+    --sand:#efe4d6;
+    --paper:#f7f0e6;
+    --card:#fffaf3;
+    --line:#e5d6c5;
+    --line-soft:#eee2d3;
+    --muted:#8a7a6a;
+    --blue:#3f6b8a;
+    --purple:#7a5a86;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--paper);color:var(--ink);line-height:1.5;padding:0 0 80px}
+  .wrap{max-width:840px;margin:0 auto}
+  header{background:linear-gradient(160deg,var(--terra-deep),var(--terra));color:#fdf6ee;padding:38px 22px 30px}
+  .kicker{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;opacity:.85;font-weight:600;margin-bottom:10px}
+  header h1{font-family:Georgia,'Times New Roman',serif;font-size:2.1rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+  header p{margin-top:10px;opacity:.9;max-width:60ch;font-size:.95rem}
+  .progress-shell{margin-top:22px}
+  .progress-top{display:flex;justify-content:space-between;align-items:baseline;font-size:.8rem;margin-bottom:7px;opacity:.92}
+  .bar{height:9px;background:rgba(255,255,255,.25);border-radius:20px;overflow:hidden}
+  .bar span{display:block;height:100%;width:0;background:#f4e9b8;border-radius:20px;transition:width .4s ease}
+
+  main{max-width:840px;margin:0 auto;padding:22px 18px 0}
+
+  .module{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-bottom:16px;overflow:hidden}
+  .mod-head{display:flex;align-items:center;gap:14px;padding:18px 20px;cursor:pointer;user-select:none;transition:background .15s}
+  .mod-head:hover{background:#fdf4ea}
+  .mod-ring{flex-shrink:0;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;transition:background .4s ease}
+  .mod-ring i{width:36px;height:36px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-style:normal;font-weight:700;font-size:.8rem;color:var(--terra-deep)}
+  .mod-titles{flex:1;min-width:0}
+  .mod-label{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--terra);font-weight:700}
+  .mod-title{font-family:Georgia,serif;font-size:1.12rem;font-weight:700;margin-top:1px}
+  .mod-meta{font-size:.78rem;color:var(--muted);margin-top:3px}
+  .chev{flex-shrink:0;color:var(--muted);transition:transform .25s;font-size:1.1rem}
+  .module.open .chev{transform:rotate(180deg)}
+  .mod-body{display:none;padding:0 20px 8px}
+  .module.open .mod-body{display:block}
+
+  .section{border-top:1px solid var(--line-soft);padding:16px 0 6px}
+  .sec-label{font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;font-weight:700;margin-bottom:10px;color:var(--olive-deep)}
+
+  .item{display:flex;gap:13px;align-items:flex-start;padding:10px 0}
+  .check{flex-shrink:0;width:26px;height:26px;border-radius:50%;border:2px solid var(--line);background:#fff;cursor:pointer;display:grid;place-items:center;margin-top:1px;transition:all .15s;font-size:14px;color:#fff}
+  .check:hover{border-color:var(--olive)}
+  .item.done .check{background:var(--olive);border-color:var(--olive)}
+  .item.done .it-title{text-decoration:line-through;text-decoration-color:var(--olive);color:var(--muted)}
+  .it-main{flex:1;min-width:0}
+  .it-title{font-size:.98rem;font-weight:600;line-height:1.35}
+  .it-sub{display:flex;align-items:center;gap:7px;font-size:.8rem;color:var(--muted);margin-top:2px}
+  .type-badge{display:inline-flex;align-items:center;gap:5px;font-weight:600}
+  .type-badge svg{width:14px;height:14px}
+  .type-video{color:var(--terra)}
+  .type-reading{color:var(--blue)}
+  .type-practice{color:var(--olive)}
+  .type-quiz{color:var(--purple)}
+  .dot{color:var(--line)}
+  .it-focus{font-size:.85rem;color:var(--muted);margin-top:4px}
+
+  .search-row{margin-top:9px;display:flex;flex-wrap:wrap;gap:7px;align-items:center}
+  .kw{font-size:.8rem;background:var(--sand);border-radius:7px;padding:4px 9px;flex:1;min-width:190px}
+  .kw b{color:var(--terra-deep);font-weight:600}
+  .yt-search{text-decoration:none;font-size:.76rem;font-weight:600;background:var(--terra);color:#fff;padding:5px 11px;border-radius:7px;white-space:nowrap;transition:background .15s}
+  .yt-search:hover{background:var(--terra-deep)}
+
+  .link-row{margin-top:9px;display:flex;gap:7px;align-items:center}
+  .link-row input{flex:1;border:1px solid var(--line);border-radius:8px;padding:7px 10px;font-size:.83rem;background:#fff;color:var(--ink);font-family:inherit}
+  .link-row input:focus{outline:none;border-color:var(--terra)}
+  .open-link{flex-shrink:0;text-decoration:none;font-size:.78rem;font-weight:600;color:#fff;background:var(--olive);padding:7px 12px;border-radius:8px;pointer-events:none;opacity:.4;transition:opacity .15s}
+  .open-link.active{pointer-events:auto;opacity:1}
+  .open-link.active:hover{background:var(--olive-deep)}
+  .saved-dot{font-size:.68rem;color:var(--olive);font-weight:600;opacity:0;transition:opacity .3s}
+  .saved-dot.show{opacity:1}
+
+  footer{max-width:840px;margin:30px auto 0;padding:0 18px;text-align:center;color:var(--muted);font-size:.8rem}
+  .reset{background:none;border:1px solid var(--line);color:var(--muted);font-size:.78rem;padding:7px 15px;border-radius:9px;cursor:pointer;margin-top:12px;font-family:inherit}
+  .reset:hover{border-color:var(--terra);color:var(--terra)}
+
+  @media(max-width:520px){
+    header h1{font-size:1.65rem}
+    .kw{min-width:100%}
+    .link-row{flex-wrap:wrap}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="kicker">GoHighLevel · 30-Day Path</div>
+    <h1>From dashboard to client-ready in a month</h1>
+    <p>Four modules, each broken into Lecture, Practice, and Review. Watch, build in your own account, then check yourself. Search a keyword, paste the video you find, tick it off. Progress and links stay on this device.</p>
+    <div class="progress-shell">
+      <div class="progress-top"><span id="pct-label">0 of 0 done</span><span id="pct-num">0%</span></div>
+      <div class="bar"><span id="bar-fill"></span></div>
+    </div>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<footer>
+  <p>Tip: add “2025” or “2026” to any search to catch the newest interface. Module 4 ties straight into your n8n work.</p>
+  <button class="reset" id="reset">Reset all progress &amp; links</button>
+</footer>
+
+<script>
+const TYPES = {
+  video:   {label:"Video",    cls:"type-video",    svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg>'},
+  reading: {label:"Reading",  cls:"type-reading",  svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v15H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>'},
+  practice:{label:"Practice", cls:"type-practice", svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2l-2 6 4 2-6 12 2-8-4-2z" fill="currentColor" stroke="none"/></svg>'},
+  quiz:    {label:"Quiz",     cls:"type-quiz",     svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 9a3 3 0 114 2.8c-.8.4-1 .9-1 1.7M12 17h.01"/></svg>'},
+};
+
+const MODULES = [
+ {m:1, chapter:"Foundations & Setup", sections:[
+   {sec:"Lecture", items:[
+     {id:"1-1", n:"1.1", type:"video", t:"GHL Overview & Account Setup", min:20, kw:"GoHighLevel beginner tutorial 2025 full walkthrough", f:"What GHL is, agency vs sub-account structure, dashboard tour."},
+     {id:"1-2", n:"1.2", type:"video", t:"Sub-Accounts & Agency vs Location View", min:15, kw:"GoHighLevel sub-account setup tutorial", f:"Agency vs location view, adding sub-accounts, snapshots intro."},
+     {id:"1-3", n:"1.3", type:"video", t:"Contacts, Custom Fields & Smart Lists", min:20, kw:"GoHighLevel contacts custom fields smart lists tutorial", f:"Importing contacts, tags, custom fields vs values, segmentation."},
+     {id:"1-4", n:"1.4", type:"video", t:"Pipelines & Opportunities (CRM)", min:20, kw:"GoHighLevel pipelines and opportunities tutorial", f:"Sales pipelines, stages, opportunity value, moving deals."},
+   ]},
+   {sec:"Reading", items:[
+     {id:"1-5", n:"1.5", type:"reading", t:"Settings, Business Profile & Branding", min:10, kw:"GoHighLevel account settings business profile setup", f:"Business info, timezone, branding, sender foundations."},
+   ]},
+   {sec:"Practice", items:[
+     {id:"1-6", n:"1.6", type:"practice", t:"Build a sub-account from scratch", min:30, kw:"GoHighLevel create sub account step by step", f:"Spin up a real sub-account, add contacts, build one pipeline."},
+   ]},
+   {sec:"Review", items:[
+     {id:"1-7", n:"1.7", type:"quiz", t:"Chapter 1 self-check", min:10, kw:"GoHighLevel CRM basics explained", f:"Can you explain agency vs sub-account, and custom field vs value?"},
+   ]},
+ ]},
+ {m:2, chapter:"Communication & Conversations", sections:[
+   {sec:"Lecture", items:[
+     {id:"2-1", n:"2.1", type:"video", t:"Conversations Inbox (Unified Messaging)", min:15, kw:"GoHighLevel conversations inbox tutorial", f:"2-way inbox: SMS, email, FB/IG DMs in one place."},
+     {id:"2-2", n:"2.2", type:"video", t:"Email Setup: SMTP, Mailgun & Domains", min:20, kw:"GoHighLevel email setup Mailgun domain authentication", f:"Email sending, domain/DNS auth, deliverability basics."},
+     {id:"2-3", n:"2.3", type:"video", t:"Phone Numbers, A2P & SMS Compliance", min:20, kw:"GoHighLevel A2P 10DLC registration SMS setup", f:"Buying numbers, LC Phone, A2P 10DLC registration."},
+     {id:"2-4", n:"2.4", type:"video", t:"Email Builder, Snippets & Trigger Links", min:20, kw:"GoHighLevel email builder trigger links tutorial", f:"Drag-and-drop emails, reusable snippets, click tracking."},
+     {id:"2-5", n:"2.5", type:"video", t:"Calendars & Appointment Booking", min:20, kw:"GoHighLevel calendar setup tutorial", f:"Calendar types, availability, round-robin, Google sync."},
+   ]},
+   {sec:"Reading", items:[
+     {id:"2-6", n:"2.6", type:"reading", t:"SMS compliance & deliverability notes", min:10, kw:"A2P 10DLC compliance guide small business", f:"Why registration matters and how to avoid blocked sends."},
+   ]},
+   {sec:"Practice", items:[
+     {id:"2-7", n:"2.7", type:"practice", t:"Build a booking flow + confirmation", min:30, kw:"GoHighLevel appointment booking automation", f:"Calendar to booking page to confirmation email/SMS."},
+   ]},
+   {sec:"Review", items:[
+     {id:"2-8", n:"2.8", type:"quiz", t:"Chapter 2 self-check", min:10, kw:"GoHighLevel messaging setup overview", f:"Can you set up sending and book an appointment end to end?"},
+   ]},
+ ]},
+ {m:3, chapter:"Funnels, Sites & Automation Core", sections:[
+   {sec:"Lecture", items:[
+     {id:"3-1", n:"3.1", type:"video", t:"Funnel Builder Basics", min:25, kw:"GoHighLevel funnel builder tutorial for beginners", f:"Steps, sections, rows, elements; publishing a funnel."},
+     {id:"3-2", n:"3.2", type:"video", t:"Websites, Blogs & Forms", min:20, kw:"GoHighLevel website builder forms tutorial", f:"Multi-page sites, blogs, forms/surveys, lead capture."},
+     {id:"3-3", n:"3.3", type:"video", t:"Workflow Builder — Fundamentals", min:25, kw:"GoHighLevel workflow automation tutorial for beginners", f:"Triggers vs actions, the canvas, first automation."},
+     {id:"3-4", n:"3.4", type:"video", t:"Triggers, Actions & If/Else Logic", min:25, kw:"GoHighLevel workflow if else conditions tutorial", f:"Trigger types, conditional branches, wait steps, goals."},
+   ]},
+   {sec:"Reading", items:[
+     {id:"3-5", n:"3.5", type:"reading", t:"Automation planning: map before you build", min:10, kw:"marketing automation workflow planning basics", f:"Sketch the flow on paper before touching the builder."},
+   ]},
+   {sec:"Practice", items:[
+     {id:"3-6", n:"3.6", type:"practice", t:"Lead-capture-to-nurture funnel", min:35, kw:"GoHighLevel lead nurture workflow example", f:"Form to funnel to tagged contact to multi-step nurture."},
+   ]},
+   {sec:"Review", items:[
+     {id:"3-7", n:"3.7", type:"quiz", t:"Chapter 3 self-check", min:10, kw:"GoHighLevel workflow triggers explained", f:"Can you name 5 triggers and build an if/else branch?"},
+   ]},
+ ]},
+ {m:4, chapter:"Advanced, SaaS & Client Delivery", sections:[
+   {sec:"Lecture", items:[
+     {id:"4-1", n:"4.1", type:"video", t:"Nurture & Follow-Up Sequences", min:20, kw:"GoHighLevel follow up automation sequence tutorial", f:"Speed-to-lead, missed-call text-back, multi-day nurture."},
+     {id:"4-2", n:"4.2", type:"video", t:"Payments, Invoices & Products", min:20, kw:"GoHighLevel payments Stripe invoices tutorial", f:"Stripe, products, invoices, order forms, subscriptions."},
+     {id:"4-3", n:"4.3", type:"video", t:"Memberships, Courses & Reputation", min:20, kw:"GoHighLevel membership course reputation tutorial", f:"Course area, drip content, review requests."},
+     {id:"4-4", n:"4.4", type:"video", t:"Reporting, Dashboards & Snapshots", min:20, kw:"GoHighLevel snapshots reporting tutorial", f:"Client reporting + packaging a build as a reusable snapshot."},
+     {id:"4-5", n:"4.5", type:"video", t:"SaaS Mode & Reselling GHL", min:25, kw:"GoHighLevel SaaS mode setup tutorial", f:"White-label reselling, rebilling, plans, pricing."},
+     {id:"4-6", n:"4.6", type:"video", t:"API, Webhooks & n8n Integration", min:30, kw:"GoHighLevel API webhooks n8n integration tutorial", f:"Inbound/outbound webhooks, API basics, connect GHL to n8n."},
+   ]},
+   {sec:"Reading", items:[
+     {id:"4-7", n:"4.7", type:"reading", t:"Client onboarding checklist", min:10, kw:"GoHighLevel agency client onboarding checklist", f:"What to gather and configure before handing off a build."},
+   ]},
+   {sec:"Practice", items:[
+     {id:"4-8", n:"4.8", type:"practice", t:"Capstone: full client build + snapshot", min:45, kw:"GoHighLevel full client onboarding build walkthrough", f:"Assemble everything into one client-ready sub-account, save snapshot."},
+   ]},
+   {sec:"Review", items:[
+     {id:"4-9", n:"4.9", type:"quiz", t:"Final self-check", min:10, kw:"GoHighLevel agency setup complete guide", f:"Could you set up a paying client from zero today?"},
+   ]},
+ ]},
+];
+
+const STORE_KEY = "ghl30_coursera_v1";
+let state = load();
+function load(){ try{ return JSON.parse(localStorage.getItem(STORE_KEY))||{}; }catch(e){ return {}; } }
+function save(){ try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }catch(e){} }
+
+let ALL_IDS = [];
+MODULES.forEach(mod=>mod.sections.forEach(s=>s.items.forEach(it=>ALL_IDS.push(it.id))));
+
+function ytSearchUrl(kw){ return "https://www.youtube.com/results?search_query="+encodeURIComponent(kw); }
+
+function moduleProgress(mod){
+  let total=0, done=0;
+  mod.sections.forEach(s=>s.items.forEach(it=>{ total++; if(state[it.id]&&state[it.id].done) done++; }));
+  return {done, total, pct: total? done/total:0};
+}
+
+function render(){
+  const app=document.getElementById("app");
+  app.innerHTML="";
+  MODULES.forEach(mod=>{
+    const mp=moduleProgress(mod);
+    const openState = state.__open && state.__open[mod.m];
+    const wrap=document.createElement("div");
+    wrap.className="module"+(openState?" open":"");
+
+    let mins=0; mod.sections.forEach(s=>s.items.forEach(it=>mins+=it.min));
+    const deg = Math.round(mp.pct*360);
+
+    let secHtml="";
+    mod.sections.forEach(s=>{
+      let itemsHtml="";
+      s.items.forEach(it=>{
+        const st=state[it.id]||{};
+        const done=!!st.done, link=st.link||"";
+        const T=TYPES[it.type];
+        itemsHtml+=`
+        <div class="item${done?' done':''}">
+          <div class="check" data-id="${it.id}" role="checkbox" aria-checked="${done}" tabindex="0">${done?'✓':''}</div>
+          <div class="it-main">
+            <div class="it-title">${it.n} · ${it.t}</div>
+            <div class="it-sub">
+              <span class="type-badge ${T.cls}">${T.svg}${T.label}</span>
+              <span class="dot">•</span><span>${it.min} min</span>
+            </div>
+            <div class="it-focus">${it.f}</div>
+            <div class="search-row">
+              <div class="kw">Search: <b>${it.kw}</b></div>
+              <a class="yt-search" href="${ytSearchUrl(it.kw)}" target="_blank" rel="noopener">YouTube ↗</a>
+            </div>
+            <div class="link-row">
+              <input type="url" placeholder="Paste the link you found…" value="${link.replace(/"/g,'&quot;')}" data-id="${it.id}" />
+              <a class="open-link ${link?'active':''}" href="${link||'#'}" target="_blank" rel="noopener">Open</a>
+              <span class="saved-dot" data-dot="${it.id}">saved</span>
+            </div>
+          </div>
+        </div>`;
+      });
+      secHtml+=`<div class="section"><div class="sec-label">${s.sec}: Chapter ${mod.m}</div>${itemsHtml}</div>`;
+    });
+
+    wrap.innerHTML=`
+      <div class="mod-head" data-mod="${mod.m}">
+        <div class="mod-ring" style="background:conic-gradient(var(--olive) ${deg}deg, var(--sand) ${deg}deg)">
+          <i>${mp.done}/${mp.total}</i>
+        </div>
+        <div class="mod-titles">
+          <div class="mod-label">Module ${mod.m}</div>
+          <div class="mod-title">${mod.chapter}</div>
+          <div class="mod-meta">${mod.sections.length} sections · ${mp.total} items · ~${mins} min</div>
+        </div>
+        <div class="chev">▾</div>
+      </div>
+      <div class="mod-body">${secHtml}</div>`;
+    app.appendChild(wrap);
+  });
+  bind();
+  updateProgress();
+}
+
+function bind(){
+  document.querySelectorAll(".mod-head").forEach(h=>{
+    h.addEventListener("click", e=>{
+      if(e.target.closest("input,a,.check")) return;
+      const m=h.dataset.mod;
+      state.__open=state.__open||{};
+      state.__open[m]=!state.__open[m];
+      save(); render();
+    });
+  });
+  document.querySelectorAll(".check").forEach(el=>{
+    const toggle=()=>{ const id=el.dataset.id; state[id]=state[id]||{}; state[id].done=!state[id].done; save(); render(); };
+    el.addEventListener("click", e=>{e.stopPropagation();toggle();});
+    el.addEventListener("keydown", e=>{ if(e.key===" "||e.key==="Enter"){e.preventDefault();toggle();} });
+  });
+  document.querySelectorAll('input[type="url"]').forEach(inp=>{
+    inp.addEventListener("click",e=>e.stopPropagation());
+    inp.addEventListener("input", ()=>{
+      const id=inp.dataset.id, val=inp.value.trim();
+      state[id]=state[id]||{}; state[id].link=val; save();
+      const btn=inp.parentElement.querySelector(".open-link");
+      if(val){btn.href=val;btn.classList.add("active");}else{btn.href="#";btn.classList.remove("active");}
+      const dot=inp.parentElement.querySelector(".saved-dot");
+      dot.classList.add("show"); clearTimeout(inp._t); inp._t=setTimeout(()=>dot.classList.remove("show"),1200);
+    });
+  });
+}
+
+function updateProgress(){
+  const total=ALL_IDS.length;
+  let done=0; ALL_IDS.forEach(id=>{ if(state[id]&&state[id].done) done++; });
+  const pct=Math.round(done/total*100);
+  document.getElementById("bar-fill").style.width=pct+"%";
+  document.getElementById("pct-label").textContent=`${done} of ${total} done`;
+  document.getElementById("pct-num").textContent=pct+"%";
+}
+
+document.getElementById("reset").addEventListener("click", ()=>{
+  if(confirm("Clear all checkmarks and saved links? This can't be undone.")){
+    const openMem=state.__open; state={__open:openMem}; save(); render();
+  }
+});
+
+if(!state.__open){ state.__open={1:true}; save(); }
+render();
+</script>
+</body>
+</html>
